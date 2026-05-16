@@ -1,0 +1,12 @@
+﻿{
+  "timerIntervalSec": 5,
+  "llmHttpTimeoutSec": 60,
+  "llmErrorLogIntervalSec": 30,
+  "defaultCheckAfterMinutes": 15,
+  "ollamaHost": "127.0.0.1",
+  "ollamaPort": 11434,
+  "ollamaModel": "llama3.2",
+  "redisHost": "127.0.0.1",
+  "redisPort": 6379,
+  "redisKeyPrefix": "taskdevourer:dialog:"
+}
