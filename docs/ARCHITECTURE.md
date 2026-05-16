@@ -1,15 +1,13 @@
-# Architecture
+﻿# Architecture
 
 ```
-MainWindow (UI) ──► TaskService ◄── TimerService (SetTimer)
-                         │
-                         ├── JsonStorage → tasks.json (texts only)
-                         ├── LlmClient → Ollama HTTP (std::async)
-                         └── DialogLogger → Redis LIST (optional)
+MainWindow (UI) --> TaskService <-- TimerService (SetTimer)
+                        |
+                        +-- JsonStorage --> tasks.json (texts only)
+                        +-- LlmClient --> Ollama /api/chat (std::thread)
+                        +-- DialogLogger --> Redis LIST (optional)
 ```
 
-- **tasks.json**: `{"tasks":["..."]}` — strings only.
-- **config.json**: timer, Ollama, Redis settings (copy from `config.json.example`).
-- **app.log**: runtime log next to the executable.
-
-See the project README for build and run instructions.
+- **tasks.json**: `{"tasks":["title", ...]}` only.
+- In-memory: numeric `id`, deadline, status, check minutes, LLM flags.
+- **config.json** / **app.log** next to the executable.
